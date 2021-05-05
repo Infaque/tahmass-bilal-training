@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import { addNote } from "../store/actions";
+import { addNewNote } from "../store/actions";
 function AddNoteForm(props) {
   const [form, setForm] = useState({
     title: "",
-    text: ""
+    text: "",
   });
 
   function handleChange(e) {
@@ -18,7 +18,7 @@ function AddNoteForm(props) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    props.addNote(form);
+    props.addNewNote(form);
     setForm({ title: "", text: "" });
   }
 
@@ -52,14 +52,11 @@ function AddNoteForm(props) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    addNote: payload => {
+    addNewNote: (payload) => {
       console.log(payload);
-      dispatch(addNote(payload));
-    }
+      dispatch(addNewNote(payload));
+    },
   };
 }
 
-export default connect(
-  null,
-  mapDispatchToProps
-)(AddNoteForm);
+export default connect(null, mapDispatchToProps)(AddNoteForm);
