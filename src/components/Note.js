@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { removeNote } from "../store/actions";
+import { deleteNote } from "../store/actions";
 
 function Note(props) {
   return (
@@ -8,18 +8,17 @@ function Note(props) {
       <h4>{props.title}</h4>
       <p>{props.text}</p>
 
-      <button class="delete" onClick={() => props.remove(props.id)}>Delete</button>
+      <button class="delete" onClick={() => props.remove(props.id)}>
+        Delete
+      </button>
     </div>
   );
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    remove: id => dispatch(removeNote(id))
+    remove: (id) => dispatch(deleteNote(id)),
   };
 }
 
-export default connect(
-  null,
-  mapDispatchToProps
-)(Note);
+export default connect(null, mapDispatchToProps)(Note);
